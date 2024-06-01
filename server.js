@@ -5,12 +5,15 @@ import { userRoute } from './src/route/userRoute.js';
 import  session from 'express-session';
 import MongoStore from 'connect-mongo';
 import { todoRouter } from './src/route/todoRoute.js';
+import cors from 'cors'
 
 config();
 
 const app=express();
 
 app.use(express.json());
+
+app.use(cors());
 
 const port=process.env.PORT||9090;
 
