@@ -14,11 +14,11 @@ userRoute.post('/register',async(req,res)=>{
    try{
       const exuser=await USER.findOne({email});
       if(exuser){
-        return res.status(302).send("User already registerd try to login")
+        return res.status(409).send("User already registerd try to login")
       }
       const exusername=await USER.findOne({userName});
       if(exusername){
-       return res.status(302).send("User name exists try to give another name")
+       return res.status(409).send("User name exists try to give another name")
       }
       else{
           bcrypt.hash(password,10,async(err,result)=>{
